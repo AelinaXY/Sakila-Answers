@@ -28,7 +28,14 @@ use sakila;
 -- 	group by film_category.category_id order by count(film_category.category_id) desc;
 
 -- Create a list of actors and the number of movies by each actor. 
+-- select actor.first_name, actor.last_name, count(film.film_id) from actor
+-- 	inner join film_actor on actor.actor_id = film_actor.actor_id
+-- 	inner join film on film_actor.film_id = film.film_id
+--     group by actor.actor_id order by count(film.film_id) desc;
 
--- Is ‘Academy Dinosaur’ available for rent from Store 1? 
+-- Is ‘Academy Dinosaur’ available for rent from Store 1?
+-- select if( count(inventory.store_id) > 0, "Available to rent from Store 1", "Not available to rent from Store 1") as 'Availability' 
+-- 	from inventory where inventory.store_id = '1' and inventory.film_id = (
+--     select film.film_id from film where film.title = 'Academy Dinosaur');
 
 -- When is ‘Academy Dinosaur’ due? 
