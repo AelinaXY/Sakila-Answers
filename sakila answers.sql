@@ -17,4 +17,4 @@ select film.title as 'Title', film.length as 'Length' from film where film.lengt
 
 select count(film.release_year) as 'Films released in 2010' from film where film.release_year = '2010';
 
-select actor.last_name, count(actor.last_name) from actor group by actor.last_name having  count(actor.last_name) = 1;
+select actor.last_name, count(actor.last_name) from actor group by actor.last_name having count(actor.last_name) = 1;
