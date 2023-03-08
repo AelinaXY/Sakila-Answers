@@ -16,3 +16,5 @@ USE sakila;
 -- select film.title as 'Title', film.length as 'Length' from film where film.length = (select max(film.length) from film);
 
 -- select count(film.release_year) as 'Films released in 2010' from film where film.release_year = '2010';
+
+-- select distinct actor.last_name from actor;
