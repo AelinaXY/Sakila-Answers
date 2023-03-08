@@ -11,6 +11,8 @@ USE sakila;
 --     inner join category on film_category.category_id = category.category_id
 -- 	group by film_category.category_id order by avg(film.length) desc;
 
--- select count(film.film_id) as "Film's with Robots" from film where `description` like '%robot%';
+-- select count(film.film_id) as 'Films with Robots' from film where `description` like '%robot%';
 
 -- select film.title as 'Title', film.length as 'Length' from film where film.length = (select max(film.length) from film);
+
+-- select count(film.release_year) as 'Films released in 2010' from film where film.release_year = '2010';
