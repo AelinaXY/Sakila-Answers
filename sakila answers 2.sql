@@ -34,8 +34,13 @@ use sakila;
 --     group by actor.actor_id order by count(film.film_id) desc;
 
 -- Is ‘Academy Dinosaur’ available for rent from Store 1?
--- select if( count(inventory.store_id) > 0, "Available to rent from Store 1", "Not available to rent from Store 1") as 'Availability' 
--- 	from inventory where inventory.store_id = '1' and inventory.film_id = (
---     select film.film_id from film where film.title = 'Academy Dinosaur');
+select if( count(inventory.store_id) > 0, "Available to rent from Store 1", "Not available to rent from Store 1") as 'Availability'
+	from inventory 
+    inner join rental on inventory.inventory_id = rental.inventory_id
+    where inventory.store_id = '1' and inventory.film_id = (
+    select film.film_id from film where film.title = 'Academy Dinosaur') and rental.return_date != null;
 
--- When is ‘Academy Dinosaur’ due? 
+-- When is ‘Academy Dinosaur’ due?
+--  select cast(rental_date + (select film.rental_duration from film where film.title = 'Academy Dinosaur') as date) as 'Due Date' 
+-- 	from rental inner join inventory on rental.inventory_id = inventory.inventory_id
+-- 	where film_id = (select film.film_id from film where film.title = 'Academy Dinosaur') and rental.return_date is null;
