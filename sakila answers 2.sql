@@ -17,9 +17,15 @@ use sakila;
 --     inner join actor on film_actor.actor_id = actor.actor_id
 --     where actor.first_name = 'Fred' and actor.last_name = 'Costner';
 
-Find out which location has the most copies of BUCKET BROTHERHOOD. 
+-- Find out which location has the most copies of BUCKET BROTHERHOOD. 
+-- select inventory.store_id, count(film.film_id) from inventory 
+-- 	inner join film on inventory.film_id = film.film_id 
+--     where film.title = 'BUCKET BROTHERHOOD' group by inventory.store_id;
 
--- Create a list of categories and the number of films for each category. 
+-- Create a list of categories and the number of films for each category.
+-- select category.name, count(film_category.category_id) from category 
+-- 	inner join film_category on category.category_id = film_category.category_id 
+-- 	group by film_category.category_id order by count(film_category.category_id) desc;
 
 -- Create a list of actors and the number of movies by each actor. 
 
